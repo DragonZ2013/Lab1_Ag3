@@ -15,6 +15,13 @@ public class Main {
         int[] num6=aufgabe_2(num4,num5);
         for(int i: num6)
             System.out.print(i+" ");
+        System.out.println();
+        int[] num7={2,3,6,0,0,0,0,0,0};
+        int[] num8=aufgabe_3(num7,50);
+        for(int i: num8)
+            System.out.print(i+" ");
+        System.out.println();
+
     }
 
     public static int[] aufgabe_1(int [] num1,int [] num2){
@@ -53,6 +60,32 @@ public class Main {
         }
         while(ret_num[0]==0)
             ret_num=Arrays.copyOfRange(ret_num, 1, ret_num.length);
+        return ret_num;
+    }
+    public static int[] add_to_start_of_array(int [] array,int elem){
+        //adds an element to the start of an array and returns new array
+        int[] ret_array=Arrays.copyOf(array,array.length+1);
+        ret_array[0]=elem;
+        System.arraycopy(array,0,ret_array,1,array.length);
+        return ret_array;
+    }
+
+    public static int[] aufgabe_3(int[] num1,int num2){
+        //multiplies a "big num" type to a regular int
+        int [] ret_num = new int[num1.length];
+        int carry=0;
+        for(int i=num1.length-1;i>=0;i--){
+            ret_num[i]=num1[i]*num2+carry;
+            carry=0;
+            if(ret_num[i]>9){
+                carry=ret_num[i]/10;
+                ret_num[i]=ret_num[i]%10;
+            }
+        }
+        while(carry!=0){
+            ret_num=add_to_start_of_array(ret_num,carry%10);
+            carry/=10;
+        }
         return ret_num;
     }
 }
