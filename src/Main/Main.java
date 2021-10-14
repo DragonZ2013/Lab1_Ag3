@@ -22,7 +22,7 @@ public class Main {
                 ret_num[i]=ret_num[i]%10;
             }
         }
-        if(carry==1){
+        if(carry!=0){
             int [] ret_num2 = new int[num1.length+1];
             ret_num2[0]=carry;
             for(int i=0;i<num1.length;i++)
