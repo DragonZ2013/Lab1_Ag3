@@ -1,5 +1,7 @@
 package Main;
 
+import java.util.Arrays;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -38,7 +40,7 @@ public class Main {
     }
 
     public static int[] aufgabe_2(int[] num1,int[] num2){
-        //subtracts 2 "big num" types, returns array as result - TODO: handle irrelevant "0" at start, resolve num2>num1
+        //subtracts 2 "big num" types, returns array as result - TODO: resolve num2>num1
         int [] ret_num = new int[num1.length];
         int borrow=0;
         for(int i=num1.length-1;i>=0;i--){
@@ -49,6 +51,8 @@ public class Main {
                 borrow=1;
             }
         }
+        while(ret_num[0]==0)
+            ret_num=Arrays.copyOfRange(ret_num, 1, ret_num.length);
         return ret_num;
     }
 }
