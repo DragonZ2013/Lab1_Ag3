@@ -8,10 +8,15 @@ public class Main {
         int[] num3 = aufgabe_1(num1,num2);
         for(int i: num3)
             System.out.print(i+" ");
+        System.out.println();
+        int[] num4={8,3,0,0,0,0,0,0,0},num5={5,4,0,0,0,0,0,0,0};
+        int[] num6=aufgabe_2(num4,num5);
+        for(int i: num6)
+            System.out.print(i+" ");
     }
 
     public static int[] aufgabe_1(int [] num1,int [] num2){
-        //adds 2 "big num" types
+        //adds 2 "big num" types, returns array as result
         int [] ret_num = new int[num1.length];
         int carry=0;
         for(int i=num1.length-1;i>=0;i--){
@@ -28,6 +33,21 @@ public class Main {
             for(int i=0;i<num1.length;i++)
                 ret_num2[i+1]=ret_num[i];
             return ret_num2;
+        }
+        return ret_num;
+    }
+
+    public static int[] aufgabe_2(int[] num1,int[] num2){
+        //subtracts 2 "big num" types, returns array as result - TODO: handle irrelevant "0" at start, resolve num2>num1
+        int [] ret_num = new int[num1.length];
+        int borrow=0;
+        for(int i=num1.length-1;i>=0;i--){
+            ret_num[i]=num1[i]-num2[i]-borrow;
+            borrow=0;
+            if(ret_num[i]<0){
+                ret_num[i]+=10;
+                borrow=1;
+            }
         }
         return ret_num;
     }
