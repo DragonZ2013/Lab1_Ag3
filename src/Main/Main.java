@@ -17,20 +17,23 @@ public class Main {
         for(int i: num6)
             System.out.print(i+" ");
         System.out.println();
-        int[] num7={2,3,6,0,0,0,0,0,0};
+        int[] num7={6,3,6,0,0,0,0,0,0};
         int[] num8=aufgabe_3(num7,50);
         for(int i: num8)
             System.out.print(i+" ");
         System.out.println();
-        int[] num9=aufgabe_4(num7,2);
+        int[] num9=aufgabe_4(num7,3);
         for(int i: num9)
             System.out.print(i+" ");
     }
 
+    /**
+     * adds 2 "big num" types, returns array as result
+     * @param num1:int[]
+     * @param num2:int[]
+     * @return int[]
+     */
     public static int[] aufgabe_1(int [] num1,int [] num2){
-        //adds 2 "big num" types, returns array as result
-        //Input: int [], int []
-        //Output: int []
         int [] ret_num = new int[num1.length];
         int carry=0;
         for(int i=num1.length-1;i>=0;i--){
@@ -51,10 +54,13 @@ public class Main {
         return ret_num;
     }
 
+    /**
+     * subtracts 2 "big num" types, returns array as result - TODO: resolve num2>num1
+     * @param num1:int[]
+     * @param num2:int[]
+     * @return int[]
+     */
     public static int[] aufgabe_2(int[] num1,int[] num2){
-        //subtracts 2 "big num" types, returns array as result - TODO: resolve num2>num1
-        //Input: int [], int []
-        //Output: int []
         int [] ret_num = new int[num1.length];
         int borrow=0;
         for(int i=num1.length-1;i>=0;i--){
@@ -69,20 +75,27 @@ public class Main {
             ret_num=Arrays.copyOfRange(ret_num, 1, ret_num.length);
         return ret_num;
     }
+
+    /**
+     * adds an element to the start of an array and returns new array
+     * @param array:int[]
+     * @param elem:int
+     * @return int[]
+     */
     public static int[] add_to_start_of_array(int [] array,int elem){
-        //adds an element to the start of an array and returns new array
-        //Input: int [], int
-        //Output: int []
         int[] ret_array=Arrays.copyOf(array,array.length+1);
         ret_array[0]=elem;
         System.arraycopy(array,0,ret_array,1,array.length);
         return ret_array;
     }
 
+    /**
+     * multiplies a "big num" type to a regular int
+     * @param num1:int[]
+     * @param num2:int
+     * @return int[]
+     */
     public static int[] aufgabe_3(int[] num1,int num2){
-        //multiplies a "big num" type to a regular int
-        //Input: int [], int
-        //Output: int []
         int [] ret_num = new int[num1.length];
         int carry=0;
         for(int i=num1.length-1;i>=0;i--){
@@ -100,8 +113,13 @@ public class Main {
         return ret_num;
     }
 
+    /**
+     * divides a "big num" type by a regular int (integer value)
+     * @param num1:int[]
+     * @param num2:int
+     * @return int[]
+     */
     public static int[] aufgabe_4(int[] num1,int num2){
-        //divides a "big num" type by a regular int (integer value)
         int [] ret_num = new int[num1.length];
         int carry=0;
         for(int i=0;i<num1.length;i++){
